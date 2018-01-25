@@ -12,9 +12,9 @@ if __name__ == "__main__":
 
     log('Start script.py...', message_type='info', title='Test-Farmware')
 
- #   log(os.environ['API_TOKEN'], message_type='info', title='Test-Farmware')
+    log(os.environ['API_TOKEN'], message_type='info', title='Test-Farmware')
 	
-#	log(os.environ['API_HOST'], message_type='info', title='Test-Farmware')
+	log(os.environ['API_HOST'], message_type='info', title='Test-Farmware')
 
 #    plantdb= DB()
 
