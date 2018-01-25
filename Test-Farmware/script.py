@@ -10,11 +10,11 @@ from CeleryPy import log
 
 if __name__ == "__main__":
 
-    log("Start script.py...", message_type='info', title='Test-Farmware')
+    log('Start script.py...', message_type='info', title='Test-Farmware')
 
-    log(os.environ['API_TOKEN'], message_type='info', title='Test-Farmware')
+ #   log(os.environ['API_TOKEN'], message_type='info', title='Test-Farmware')
 	
-	log(os.environ['API_HOST'], message_type='info', title='Test-Farmware')
+#	log(os.environ['API_HOST'], message_type='info', title='Test-Farmware')
 
 #    plantdb= DB()
 
@@ -24,4 +24,4 @@ if __name__ == "__main__":
  #   plantdb.loop_plant_points()          #Move to plant points and water them with the Water on/off sequence
 
  
-    log("End script.py...", message_type='info', title='Test-Farmware')
+    log('End script.py...', message_type='info', title='Test-Farmware')
