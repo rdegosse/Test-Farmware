@@ -12,17 +12,19 @@ if __name__ == "__main__":
 
     log('Start script.py...', message_type='info', title='Test-Farmware')
 	
-	try:
-            api_token = os.environ['API_TOKEN']
+    try:
+        api_token = os.environ['API_TOKEN']
     except KeyError:
-            api_token = 'no token'
+        api_token = 'no token'
+			
     log(api_token, message_type='info', title='Test-Farmware')
 	
-	try:
-            api_host = os.environ['API_HOST']
+    try:
+        api_host = os.environ['API_HOST']
     except KeyError:
-            api_host = 'no api host'
-	log(api_host, message_type='info', title='Test-Farmware')
+        api_host = 'no api host'
+	
+    log(api_host, message_type='info', title='Test-Farmware')
 
 #    plantdb= DB()
 
