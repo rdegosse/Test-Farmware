@@ -2,11 +2,10 @@ import os
 import sys
 import json
 import base64
+import requests
 
 from CeleryPy import log
 # from DB import DB
-
-
 
 
 if __name__ == "__main__":
@@ -42,6 +41,20 @@ if __name__ == "__main__":
     log(headers, message_type='info', title='Test-Farmware')
 
     log(encoded_payload, message_type='info', title='Test-Farmware')
+    
+    response = requests.get(api_url + 'points', headers=headers)
+    app_points = response.json()
+    if response.status_code == 200:
+            plants = []
+            for point in app_points:
+                if point['pointer_type'] == 'Plant':
+                    plants.append({
+                        'x': point['x'],
+                        'y': point['y'],})
+                    log(point, message_type='info', title='Test-Farmware')
+            sorted_coords = sorted(plants) 
+    
+    log(sorted_coords, message_type='info', title='Test-Farmware')
     
     
     
