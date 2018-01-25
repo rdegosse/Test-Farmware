@@ -20,11 +20,20 @@ if __name__ == "__main__":
     log(api_token, message_type='info', title='Test-Farmware')
 	
     try:
-        api_host = os.environ['API_HOST']
-    except KeyError:
-        api_host = 'no api host'
-	
-    log(api_host, message_type='info', title='Test-Farmware')
+        encoded_payload = api_token.split('.')[1]
+        encoded_payload += '=' * (4 - len(encoded_payload) % 4)
+        json_payload = base64.b64decode(encoded_payload).decode('utf-8')
+        server = json.loads(json_payload)['iss']
+    except:  
+        server = '//my.farmbot.io'
+    
+	api_url = 'http{}:{}/api/'.format(
+        's' if 'localhost' not in server else '', server)
+    headers = {'Authorization': 'Bearer {}'.format(api_token),'content-type': "application/json"}        
+
+    log(api_url, message_type='info', title='Test-Farmware')
+    
+    log(headers, message_type='info', title='Test-Farmware')
 
 #    plantdb= DB()
 
