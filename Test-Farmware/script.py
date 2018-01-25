@@ -35,6 +35,10 @@ if __name__ == "__main__":
     
     log(headers, message_type='info', title='Test-Farmware')
 
+    log(encoded_payload, message_type='info', title='Test-Farmware')
+    
+    log(json_payload, message_type='info', title='Test-Farmware')
+    
 #    plantdb= DB()
 
  #   plantdb.load_plants_from_web_app()   #Get plant points from Webapp
