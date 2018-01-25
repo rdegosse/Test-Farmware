@@ -32,15 +32,12 @@ if __name__ == "__main__":
     except:  
         server = '//my.farmbot.io'
     
-    api_url = 'http{}:{}/api/'.format(
-        's' if 'localhost' not in server else '', server)
-    headers = {'Authorization': 'Bearer {}'.format(api_token),'content-type': "application/json"}        
-
+    api_url = 'http{}:{}/api/'.format('', server)
     log(api_url, message_type='info', title='Test-Farmware')
     
+    headers = {'Authorization': 'Bearer {}'.format(api_token),'content-type': "application/json"}        
     log(headers, message_type='info', title='Test-Farmware')
-
-    log(encoded_payload, message_type='info', title='Test-Farmware')
+    
     
     response = requests.get(api_url + 'points', headers=headers)
     app_points = response.json()
