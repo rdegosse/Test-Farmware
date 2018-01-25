@@ -23,12 +23,17 @@ if __name__ == "__main__":
     try:
         encoded_payload = api_token.split('.')[1]
         encoded_payload += '=' * (4 - len(encoded_payload) % 4)
+        log("encoded_payload:" + encoded_payload, message_type='info', title='Test-Farmware')
+        
+        
         json_payload = base64.b64decode(encoded_payload).decode('utf-8')
         server = json.loads(json_payload)['iss']
+        log("json_payload:" + json_payload, message_type='info', title='Test-Farmware')
+        
     except:  
         server = '//my.farmbot.io'
     
-	api_url = 'http{}:{}/api/'.format(
+    api_url = 'http{}:{}/api/'.format(
         's' if 'localhost' not in server else '', server)
     headers = {'Authorization': 'Bearer {}'.format(api_token),'content-type': "application/json"}        
 
@@ -38,7 +43,7 @@ if __name__ == "__main__":
 
     log(encoded_payload, message_type='info', title='Test-Farmware')
     
-    log(json_payload, message_type='info', title='Test-Farmware')
+    
     
 #    plantdb= DB()
 
