@@ -5,6 +5,8 @@ import base64
 import requests
 
 from CeleryPy import log
+from Util import get_optimal_way
+
 # from DB import DB
 
 
@@ -42,16 +44,9 @@ if __name__ == "__main__":
     response = requests.get(api_url + 'points', headers=headers)
     app_points = response.json()
     if response.status_code == 200:
-            plants = []
-            for point in app_points:
-                if point['pointer_type'] == 'Plant':
-                    plants.append({
-                        'x': point['x'],
-                        'y': point['y'],})
-                    log(point, message_type='info', title='Test-Farmware')
-            sorted_coords = sorted(plants) 
+            opt_points, tab_id = get_optimal_way(app_points)
     
-    log(sorted_coords, message_type='info', title='Test-Farmware')
+    log(tab_id, message_type='info', title='Test-Farmware')
     
     
     
