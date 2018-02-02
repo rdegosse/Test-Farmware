@@ -1,4 +1,4 @@
-
+from math import sqrt
     
 def get_optimal_way(points):
     #return list of dict points sorted , tab of sorted id
