@@ -1,4 +1,3 @@
-import sys
 
 from FARMWARE import FARMWARE
 from CeleryPy import log
@@ -18,7 +17,8 @@ if __name__ == "__main__":
         log(e ,message_type='error', title=FARMWARE_NAME + " : init" )
     else:
         try:
-            farmware.run()
+            #farmware.run()
+            pass
         except Exception as e:
             log(e ,message_type='error', title=FARMWARE_NAME + " : run" )    
     
