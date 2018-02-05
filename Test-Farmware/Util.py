@@ -36,7 +36,7 @@ def Get_Optimal_Way(points):
 
     #for p in points:
     #    print(p)
-    print(len(points))
+    #print(len(points))
     ####DEBUG
 
 
@@ -119,7 +119,7 @@ def Get_Optimal_Way(points):
     #print(tablost)      
     #print("----------------------------")
     #print(graph)
-    print(len(graph))
+    #print(len(graph))
     
 
     #create list of dictionary points in optimal way order

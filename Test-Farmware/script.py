@@ -44,17 +44,19 @@ if __name__ == "__main__":
     
     response = requests.get(api_url + 'points', headers=headers)
     app_points = response.json()
-    if response.status_code != 200:
+    if response.status_code == 200:
         #app_points = Filter_Points(app_points,openfarm_slug='carrot')
         app_points = Filter_Points(app_points)
+        log(len(app_points), message_type='debug', title='Test-Farmware')
 
         opt_points,tab_id = Get_Optimal_Way(app_points)
-
-        log(tab_id, message_type='info', title='Test-Farmware')
+        log(len(opt_points), message_type='debug', title='Test-Farmware')
+        log(len(tab_id), message_type='debug', title='Test-Farmware')
+        log(tab_id, message_type='debug', title='Test-Farmware')
         #log(opt_points, message_type='info', title='Test-Farmware')
 
         for p in opt_points:
-            log(p, message_type='info', title='Test-Farmware')    
+            log(p, message_type='debug', title='Test-Farmware')    
 
         #log('', message_type='info', title='Test-Farmware')
         #log(len(app_points), message_type='info', title='Test-Farmware')
