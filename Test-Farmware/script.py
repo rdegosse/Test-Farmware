@@ -1,5 +1,5 @@
 
-from FARMWARE import FARMWARE
+#from FARMWARE import FARMWARE
 from CeleryPy import log
 
 
