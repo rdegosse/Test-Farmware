@@ -3,11 +3,11 @@
 from CeleryPy import log
 
 
-FARMWARE_NAME = "Test-Farmware"
-
 
 if __name__ == "__main__":
 
+    FARMWARE_NAME = "Test-Farmware"
+    
     log('Start script.py...', message_type='info', title=FARMWARE_NAME)
 	
     try:
