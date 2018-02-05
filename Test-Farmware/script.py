@@ -1,3 +1,4 @@
+import sys
 
 from FARMWARE import FARMWARE
 from CeleryPy import log
