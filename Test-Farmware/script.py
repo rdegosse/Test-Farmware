@@ -44,7 +44,7 @@ if __name__ == "__main__":
     
     response = requests.get(api_url + 'points', headers=headers)
     app_points = response.json()
-    if response.status_code == 200:
+    if response.status_code != 200:
         #app_points = Filter_Points(app_points,openfarm_slug='carrot')
         app_points = Filter_Points(app_points)
 
