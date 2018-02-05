@@ -56,8 +56,9 @@ class FARMWARE():
 
     def sort_points(self):
         #self.points = self.points ########## add sort opt_points,tab_id = Get_Optimal_Way(app_points)
-        self.points = Get_Optimal_Way(self.points)
-        
+        #self.points, self.tab_id = Get_Optimal_Way(self.points)
+        pass
+
     def run(self):
         self.load_points_with_filters()
         self.sort_points()
