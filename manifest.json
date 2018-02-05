@@ -3,13 +3,25 @@
  "language": "python",
  "author": "rdegosse",
  "description": "Farmware tester",
- "version": "1.0.19",
+ "version": "1.0.20",
  "min_os_version_major": 3,
  "url": "https://raw.githubusercontent.com/rdegosse/Test-Farmware/master/manifest.json",
  "zip": "https://github.com/rdegosse/Test-Farmware/archive/master.zip",
  "executable": "python",
  "args": ["Test-Farmware-master/Test-Farmware/script.py"],
  "config": [
-    {"name": "type", "label": "Plan Type", "value": "carrot..."}
+  {"name": "pointname", "label": "Filter by plant name", "value": ""},
+  {"name": "openfarm_slug", "label": "Filter by Openfarm slug name", "value": ""},
+  {"name": "age_min_day", "label": "Filter by plant age (minimum days)", "value": "0"},
+  {"name": "age_max_day", "label": "Filter by plant age (maximum days)", "value": "365"},
+  {"name": "meta_filter_key", "label": "Filter by meta data : key", "value": ""},
+  {"name": "meta_filter_value", "label": "Filter by meta data : value", "value": ""},
+  {"name": "sequence_init", "label": "Init Sequence Name (one time)", "value": ""},
+  {"name": "sequence_beforemove", "label": "Sequence name Before Next Move  (each plant)", "value": ""},
+  {"name": "sequence_aftermove", "label": "Sequence Name After Move  (each plant)", "value": ""},
+  {"name": "sequence_end", "label": "End Sequence Name (one time)", "value": ""},
+  {"name": "meta_save_key", "label": "Save in meta data : key", "value": ""},
+  {"name": "meta_save_value", "label": "Save in meta data : value", "value": ""},
+  {"name": "debug", "label": "Debug", "value": "0-> No debug, 1-> debug message, 2-> No Move, debug message"}
   ]
 }
