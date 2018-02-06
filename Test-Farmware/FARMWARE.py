@@ -1,6 +1,6 @@
 import os
 from API import API
-from UTIL import *
+#from UTIL import *
 from CeleryPy import log
 
 class MyFarmware():
@@ -42,8 +42,15 @@ class MyFarmware():
         self.api = API(self)
         self.points = {}
 
+    def apply_filters(points,name='',openfarm_slug='',age_min_day=0,age_max_day=365,meta_key='',meta_value='',pointer_type='Plant'):
+        filtered_points = []
+        for p in points:
+            if p['pointer_type'].lower() == pointer_type.lower() and (p['name'].lower() == name.lower() or name == '') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == ''):
+                filtered_points.append(p.copy())
+        return filtered_points
+
     def load_points_with_filters(self):
-        self.points = Filter_Points(
+        self.points = self.apply_filters(
             self.api.api_get('points'),
             name=self.input_pointname,
             openfarm_slug=self.input_openfarm_slug,
