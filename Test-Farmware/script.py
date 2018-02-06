@@ -1,5 +1,5 @@
 
-from FARMWARE import FARMWARE
+from FARMWARE import MyFarmware
 from CeleryPy import log
 
 
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     
     """
     try:
-        farmware = FARMWARE(FARMWARE_NAME)
+        farmware = MyFarmware(FARMWARE_NAME)
         #pass
     except Exception as e:
         #log(type(e).__str__ + ' ' + e.args + ' ' + e ,message_type='error', title=FARMWARE_NAME + " : init" )
@@ -24,6 +24,6 @@ if __name__ == "__main__":
         except Exception as e:
             log(e ,message_type='error', title=FARMWARE_NAME + " : run" )
     """
-    
+
     log('End script.py...', message_type='info', title=FARMWARE_NAME)
 
