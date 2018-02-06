@@ -23,7 +23,7 @@ if __name__ == "__main__":
             #pass
         except Exception as e:
             log(e ,message_type='error', title=FARMWARE_NAME + " : run" )
-            raise Exception(e)
+            #raise Exception(e)
     
 
     log('End script.py...', message_type='debug', title=FARMWARE_NAME)

@@ -32,6 +32,7 @@ class API():
         
         log(self.api_url, message_type='debug', title='Class API:api_setup')
         log(self.headers, message_type='debug', title='Class API:api_setup')
+        log(json_payload, message_type='debug', title='Class API:api_setup')
 
     def __init__(self,farmware):
         self.farmwarename = farmware.farmwarename
