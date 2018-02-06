@@ -9,7 +9,7 @@ if __name__ == "__main__":
     FARMWARE_NAME = "Test-Farmware"
 
     log('Start script.py...', message_type='info', title=FARMWARE_NAME)
-	
+"""	
     try:
         farmware = FARMWARE(FARMWARE_NAME)
         #pass
@@ -22,5 +22,5 @@ if __name__ == "__main__":
             #pass
         except Exception as e:
             log(e ,message_type='error', title=FARMWARE_NAME + " : run" )    
-    
+"""    
     log('End script.py...', message_type='info', title=FARMWARE_NAME)
