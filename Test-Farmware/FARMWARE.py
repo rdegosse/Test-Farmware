@@ -1,6 +1,6 @@
 import os
 from API import API
-#from UTIL import *
+from UTIL import *
 from CeleryPy import log
 
 class MyFarmware():
@@ -43,7 +43,6 @@ class MyFarmware():
         self.points = {}
 
     def load_points_with_filters(self):
-        """
         self.points = Filter_Points(
             self.api.api_get('points'),
             name=self.input_pointname,
@@ -53,9 +52,9 @@ class MyFarmware():
             meta_key=self.input_filter_meta_key,
             meta_value=self.input_filter_meta_value,
             pointer_type='Plant')
-        """
-        pass
-            
+        
+        
+
     def sort_points(self):
         #self.points = self.points ########## add sort opt_points,tab_id = Get_Optimal_Way(app_points)
         #self.points, self.tab_id = Get_Optimal_Way(self.points)

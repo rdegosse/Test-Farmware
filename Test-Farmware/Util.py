@@ -1,3 +1,4 @@
+"""
 import copy
 from math import sqrt
 from operator import itemgetter
@@ -129,6 +130,7 @@ def Get_Optimal_Way(points):
         opt_points.append(p.copy()[0])
     return opt_points, tab
 
+"""
     
 def Filter_Points(points,name='',openfarm_slug='',age_min_day=0,age_max_day=365,meta_key='',meta_value='',pointer_type='Plant'):
     filtered_points = []
