@@ -42,7 +42,7 @@ class MyFarmware():
         self.api = API(self)
         self.points = {}
 
-    def apply_filters(point,name='',openfarm_slug='',age_min_day=0,age_max_day=365,meta_key='',meta_value='',pointer_type='Plant'):
+    def apply_filters(point, point_name='', openfarm_slug='', age_min_day=0, age_max_day=365, meta_key='', meta_value='', pointer_type='Plant'):
         filtered_points = []
         for p in points:
             if p['pointer_type'].lower() == pointer_type.lower() and (p['name'].lower() == name.lower() or name == '') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == ''):
