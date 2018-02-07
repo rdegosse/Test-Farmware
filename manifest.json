@@ -13,7 +13,7 @@
   {"name": "pointname", "label": "Filter by plant name", "value": ""},
   {"name": "openfarm_slug", "label": "Filter by Openfarm slug name", "value": ""},
   {"name": "age_min_day", "label": "Filter by plant age (minimum days)", "value": "0"},
-  {"name": "age_max_day", "label": "Filter by plant age (maximum days)", "value": "365"},
+  {"name": "age_max_day", "label": "Filter by plant age (maximum days)", "value": "36500"},
   {"name": "meta_filter_key", "label": "Filter by meta data : key", "value": ""},
   {"name": "meta_filter_value", "label": "Filter by meta data : value", "value": ""},
   {"name": "sequence_init", "label": "Init Sequence Name (one time)", "value": ""},

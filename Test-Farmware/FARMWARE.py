@@ -12,8 +12,8 @@ class MyFarmware():
         
         self.input_pointname = os.environ.get(prefix+"_pointname", "")
         self.input_openfarm_slug = os.environ.get(prefix+"_openfarm_slug", "")
-        self.input_age_min_day = os.environ.get(prefix+"__age_min_day", 0)
-        self.input_age_max_day = os.environ.get(prefix+"__age_max_day", 36500)
+        self.input_age_min_day = os.environ.get(prefix+"_age_min_day", 0)
+        self.input_age_max_day = os.environ.get(prefix+"_age_max_day", 36500)
         self.input_filter_meta_key = os.environ.get(prefix+"_filter_meta_key", "")
         self.input_filter_meta_value = os.environ.get(prefix+"_filter_meta_value", "")
         self.input_sequence_init = os.environ.get(prefix+"_sequence_init", "Not Set")
@@ -128,13 +128,16 @@ class MyFarmware():
             if self.input_debug >= 1: log('Move absolute: ' + str(point) , message_type='debug', title=str(self.farmwarename) + ' : move_absolute_point')
             if self.input_debug < 2: pass # move_absolute
 
+    def save_meta(self,point):
+        pass
 
     def loop_points(self):
         for p in self.points:
             self.execute_sequence_before()
             self.move_absolute_point(p)
             self.execute_sequence_after()
-            
+            self.save_meta(p)
+    
     
     def run(self):
         self.load_points_with_filters()

@@ -30,11 +30,12 @@ class API():
         self.headers = {'Authorization': 'Bearer {}'.format(api_token),
                         'content-type': "application/json"}
         
-        log(self.api_url, message_type='debug', title='Class API:api_setup')
-        log(self.headers, message_type='debug', title='Class API:api_setup')
-        log(json_payload, message_type='debug', title='Class API:api_setup')
+        if self.farmware.input_debug >= 1: log(self.api_url, message_type='debug', title='Class API:api_setup')
+        if self.farmware.input_debug >= 1: log(self.headers, message_type='debug', title='Class API:api_setup')
+        if self.farmware.input_debug >= 1: log(json_payload, message_type='debug', title='Class API:api_setup')
 
     def __init__(self,farmware):
+        self.farmware = farmware
         self.farmwarename = farmware.farmwarename
         self.api_setup()
 
