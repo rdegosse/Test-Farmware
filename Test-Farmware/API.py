@@ -45,6 +45,20 @@ class API():
         self.api_response_error_collector(response)
         self.api_response_error_printer()
         return response.json()
+    
+    def api_post(self, endpoint, data):
+        """POST to an API endpoint."""
+        response = requests.post(self.api_url + endpoint, headers=self.headers, json=json.dumps(data))
+        self.api_response_error_collector(response)
+        self.api_response_error_printer()
+        return response.json()
+
+    def api_put(self, endpoint, data):
+        response = requests.put(self.api_url + endpoint, headers=self.headers, data=json.dumps(data))
+        self.api_response_error_collector(response)
+        self.api_response_error_printer()
+        return response.json()
+
 
     def api_response_error_collector(self, response):
         """Catch and log errors from API requests."""

@@ -3,7 +3,7 @@
  "language": "python",
  "author": "rdegosse",
  "description": "Farmware tester",
- "version": "1.0.42",
+ "version": "1.0.50",
  "min_os_version_major": 6,
  "url": "https://raw.githubusercontent.com/rdegosse/Test-Farmware/master/manifest.json",
  "zip": "https://github.com/rdegosse/Test-Farmware/archive/master.zip",
@@ -22,6 +22,8 @@
   {"name": "sequence_end", "label": "End Sequence Name (one time)", "value": ""},
   {"name": "meta_save_key", "label": "Save in meta data : key", "value": ""},
   {"name": "meta_save_value", "label": "Save in meta data : value", "value": ""},
-  {"name": "debug", "label": "Debug", "value": "0-> No debug, 1-> debug message, 2-> No Move, debug message"}
+  {"name": "default_z", "label": "default Z axis value when moving", "value": 0},
+  {"name": "default_speed", "label": "default speed value when moving", "value": 800},
+  {"name": "debug", "label": "Debug (0-> No debug msg, 1-> debug msg, 2-> No Move/exec and debug msg only)", "value": 1}
   ]
 }

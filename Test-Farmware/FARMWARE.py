@@ -22,7 +22,9 @@ class MyFarmware():
         self.input_sequence_end = os.environ.get(prefix+"_sequence_end", "Not Set")
         self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", "")
         self.input_save_meta_value = os.environ.get(prefix+"_save_meta_value", "")
-        self.input_debug = os.environ.get(prefix+"_debug", 2)
+        self.input_default_z = os.environ.get(prefix+"_default_z", 0)
+        self.input_default_speed = os.environ.get(prefix+"_default_speed", 800)
+        self.input_debug = os.environ.get(prefix+"_debug", 1)
 
         if self.input_debug >= 1:
             log(self.input_pointname, message_type='debug', title=self.farmwarename)
@@ -37,6 +39,8 @@ class MyFarmware():
             log(self.input_sequence_end, message_type='debug', title=self.farmwarename)
             log(self.input_save_meta_key, message_type='debug', title=self.farmwarename)
             log(self.input_save_meta_value, message_type='debug', title=self.farmwarename)
+            log(self.input_default_z, message_type='debug', title=self.farmwarename)
+            log(self.input_default_speed, message_type='debug', title=self.farmwarename)
             log(self.input_debug, message_type='debug', title=self.farmwarename)
         
     def __init__(self,farmwarename):
@@ -106,30 +110,48 @@ class MyFarmware():
     def execute_sequence_init(self):
         if self.input_sequence_init_id != -1 :
             if self.input_debug >= 1: log('Execute Sequence: ' + self.input_sequence_init + ' id:' + str(self.input_sequence_init_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_init')
-            if self.input_debug < 2: execute_sequence(self.input_sequence_init_id)
+            if self.input_debug < 2: execute_sequence(sequence_id=self.input_sequence_init_id)
+        else:
+            if self.input_debug >= 1: log('Sequence Not Found', message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_init')
 
     def execute_sequence_before(self):
         if self.input_sequence_beforemove_id != -1 : 
             if self.input_debug >= 1: log('Execute Sequence: ' + self.input_sequence_beforemove + ' id:' + str(self.input_sequence_beforemove_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_before')
-            if self.input_debug < 2: execute_sequence(self.input_sequence_beforemove_id)
+            if self.input_debug < 2: execute_sequence(sequence_id=self.input_sequence_beforemove_id)
+        else:
+            if self.input_debug >= 1: log('Sequence Not Found', message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_before')
                 
 
     def execute_sequence_after(self):
         if self.input_sequence_aftermove_id != -1 : 
             if self.input_debug >= 1: log('Execute Sequence: ' + self.input_sequence_aftermove + ' id:' + str(self.input_sequence_aftermove_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_after')
-            if self.input_debug < 2: execute_sequence(self.input_sequence_aftermove_id)
+            if self.input_debug < 2: execute_sequence(sequence_id=self.input_sequence_aftermove_id)
+        else:
+            if self.input_debug >= 1: log('Sequence Not Found', message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_after')
 
     def execute_sequence_end(self):
         if self.input_sequence_end_id != -1 : 
             if self.input_debug >= 1: log('Execute Sequence: ' + self.input_sequence_end + ' id:' + str(self.input_sequence_end_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_end')
-            if self.input_debug < 2: execute_sequence(self.input_sequence_end_id)
+            if self.input_debug < 2: execute_sequence(sequence_id=self.input_sequence_end_id)
+        else:
+            if self.input_debug >= 1: log('Sequence Not Found' + str(self.input_sequence_end_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_end')
 
     def move_absolute_point(self,point):
             if self.input_debug >= 1: log('Move absolute: ' + str(point) , message_type='debug', title=str(self.farmwarename) + ' : move_absolute_point')
-            if self.input_debug < 2: pass # move_absolute
+            if self.input_debug < 2: 
+                move_absolute(
+                    location=[point['x'],point['y'] ,self.input_default_z],
+                    offset=[0, 0, 0],
+                    speed=self.input_default_speed)
 
     def save_meta(self,point):
-        pass
+        if self.input_save_meta_key != '':
+            if self.input_debug >= 1: log('Save Meta Information: ' + str(point['id']) , message_type='debug', title=str(self.farmwarename) + ' : save_meta')
+            if self.input_debug < 2 :
+                point['meta'][self.input_save_meta_key]=self.input_save_meta_value
+                endpoint = 'points/{}'.format(point['id'])
+                self.api.api_put(endpoint=endpoint, data=point)
+
 
     def loop_points(self):
         for p in self.points:
@@ -142,8 +164,8 @@ class MyFarmware():
     def run(self):
         self.load_points_with_filters()
         self.sort_points()
-        self.load_sequences_id()
-        self.execute_sequence_init()        
-        self.loop_points()
-        self.execute_sequence_end()
+        if len(self.points) > 0 : self.load_sequences_id()
+        if len(self.points) > 0 : self.execute_sequence_init()        
+        if len(self.points) > 0 : self.loop_points()
+        if len(self.points) > 0 : self.execute_sequence_end()
         
