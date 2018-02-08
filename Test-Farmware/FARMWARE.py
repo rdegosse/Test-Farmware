@@ -12,8 +12,8 @@ class MyFarmware():
         
         self.input_pointname = os.environ.get(prefix+"_pointname", '')
         self.input_openfarm_slug = os.environ.get(prefix+"_openfarm_slug", '')
-        self.input_age_min_day = os.environ.get(prefix+"_age_min_day", 0)
-        self.input_age_max_day = os.environ.get(prefix+"_age_max_day", 36500)
+        self.input_age_min_day = int(os.environ.get(prefix+"_age_min_day", 0))
+        self.input_age_max_day = int(os.environ.get(prefix+"_age_max_day", 36500))
         self.input_filter_meta_key = os.environ.get(prefix+"_filter_meta_key", '')
         self.input_filter_meta_value = os.environ.get(prefix+"_filter_meta_value", '')
         self.input_sequence_init = os.environ.get(prefix+"_sequence_init", "Not Set")
@@ -22,9 +22,9 @@ class MyFarmware():
         self.input_sequence_end = os.environ.get(prefix+"_sequence_end", "Not Set")
         self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", '')
         self.input_save_meta_value = os.environ.get(prefix+"_save_meta_value", '')
-        self.input_default_z = os.environ.get(prefix+"_default_z", 0)
-        self.input_default_speed = os.environ.get(prefix+"_default_speed", 800)
-        self.input_debug = os.environ.get(prefix+"_debug", 1)
+        self.input_default_z = int(os.environ.get(prefix+"_default_z", 0))
+        self.input_default_speed = int(os.environ.get(prefix+"_default_speed", 800))
+        self.input_debug = int(os.environ.get(prefix+"_debug", 1))
 
         if self.input_debug >= 1:
             log('pointname: {}'.format(self.input_pointname), message_type='debug', title=self.farmwarename)
@@ -71,7 +71,7 @@ class MyFarmware():
                     if self.input_debug >= 1: log('pointer_type:{} name:{} openfarm_slug:{} age_day:{} b_meta:{}'.format(p['pointer_type'].lower(),p['name'].lower(),p['openfarm_slug'].lower(),age_day,b_meta), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                 except:
                     pass
-                if  (p['name'].lower() == point_name.lower() or point_name == '') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '') and (age_min_day <= age_day and age_day <= age_max_day) and b_meta==True:
+                if  (p['name'].lower() == point_name.lower() or point_name == '') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '') and (age_min_day <= age_day <= age_max_day) and b_meta==True:
                     filtered_points.append(p.copy())
                     if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                     #filtered_points.append(p)
@@ -79,7 +79,7 @@ class MyFarmware():
                     log('name', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                 if  (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == ''):
                     log('slug', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                if  (age_min_day <= age_day and age_day <= age_max_day):
+                if  (age_min_day <= age_day <= age_max_day):
                     log('age', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                 if b_meta==True:
                     log('b_meta', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
