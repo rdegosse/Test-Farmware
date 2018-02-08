@@ -75,6 +75,15 @@ class MyFarmware():
                     filtered_points.append(p.copy())
                     if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                     #filtered_points.append(p)
+                if  (p['name'].lower() == point_name.lower() or point_name == ''):
+                    log('name', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
+                if  (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == ''):
+                    log('slug', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
+                if  (age_min_day <= age_day <= age_max_day):
+                    log('age', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
+                if b_meta==True:
+                    log('b_meta', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
+
         return filtered_points
 
     def load_points_with_filters(self):
