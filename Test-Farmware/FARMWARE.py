@@ -47,7 +47,7 @@ class MyFarmware():
         self.farmwarename = farmwarename
         self.get_input_env()
         self.api = API(self)
-        self.points = {}
+        self.points = []
 
     def apply_filters(self, points, point_name='', openfarm_slug='', age_min_day=0, age_max_day=36500, meta_key='', meta_value='', pointer_type='Plant'):
         if self.input_debug >= 1: log(points, message_type='debug', title=str(self.farmwarename) + ' : load_points')
@@ -76,6 +76,7 @@ class MyFarmware():
                     (age_min_day <= age_day <= age_max_day) and \
                     b_meta:
                     filtered_points.append(p.copy())
+                    if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                     #filtered_points.append(p)
         return filtered_points
 
@@ -141,7 +142,7 @@ class MyFarmware():
             if self.input_debug >= 1: log('Execute Sequence: ' + self.input_sequence_end + ' id:' + str(self.input_sequence_end_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_end')
             if self.input_debug < 2: execute_sequence(sequence_id=self.input_sequence_end_id)
         else:
-            if self.input_debug >= 1: log('Sequence Not Found' + str(self.input_sequence_end_id), message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_end')
+            if self.input_debug >= 1: log('Sequence Not Found' , message_type='debug', title=str(self.farmwarename) + ' : execute_sequence_end')
 
     def move_absolute_point(self,point):
             if self.input_debug >= 1: log('Move absolute: ' + str(point) , message_type='debug', title=str(self.farmwarename) + ' : move_absolute_point')
