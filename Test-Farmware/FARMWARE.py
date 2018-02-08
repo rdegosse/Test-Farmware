@@ -16,11 +16,11 @@ class MyFarmware():
         self.input_age_max_day = int(os.environ.get(prefix+"_age_max_day", 36500))
         self.input_filter_meta_key = os.environ.get(prefix+"_filter_meta_key", 'None')
         self.input_filter_meta_value = os.environ.get(prefix+"_filter_meta_value", 'None')
-        self.input_sequence_init = os.environ.get(prefix+"_sequence_init", "None")
-        self.input_sequence_beforemove  = os.environ.get(prefix+"_sequence_beforemove", "None")
-        self.input_sequence_aftermove = os.environ.get(prefix+"_sequence_aftermove", "None")
-        self.input_sequence_end = os.environ.get(prefix+"_sequence_end", "None")
-        self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", 'None)
+        self.input_sequence_init = os.environ.get(prefix+"_sequence_init", 'None')
+        self.input_sequence_beforemove  = os.environ.get(prefix+"_sequence_beforemove", 'None')
+        self.input_sequence_aftermove = os.environ.get(prefix+"_sequence_aftermove", 'None')
+        self.input_sequence_end = os.environ.get(prefix+"_sequence_end", 'None')
+        self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", 'None')
         self.input_save_meta_value = os.environ.get(prefix+"_save_meta_value", 'None')
         self.input_default_z = int(os.environ.get(prefix+"_default_z", 0))
         self.input_default_speed = int(os.environ.get(prefix+"_default_speed", 800))
@@ -64,27 +64,13 @@ class MyFarmware():
                         b_meta = ((p['meta'][meta_key]).lower() == meta_value.lower())
                     except Exception as e:
                         b_meta = False
-                        log(' {} {}'.format(e,p['id']) ,message_type='error', title="debug meta_key" )
+                        #log(' {} {}'.format(e,p['id']) ,message_type='error', title="debug meta_key" )
                 else:
                     b_meta = True
-                try: 
-                    if self.input_debug >= 1: log('pointer_type:{} name:{} openfarm_slug:{} age_day:{} b_meta:{}'.format(p['pointer_type'].lower(),p['name'].lower(),p['openfarm_slug'].lower(),age_day,b_meta), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                except:
-                    pass
                 if  (p['name'].lower() == point_name.lower() or point_name == '*') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '*') and (age_min_day <= age_day <= age_max_day) and b_meta==True:
                     filtered_points.append(p.copy())
-                    if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')
-                """
-                    #filtered_points.append(p)
-                if  (p['name'].lower() == point_name.lower() or point_name == 'None'):
-                    log('name', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                if  (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == 'None'):
-                    log('slug', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                if  (age_min_day <= age_day <= age_max_day):
-                    log('age', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                if b_meta==True:
-                    log('b_meta', message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
-                """
+                    #if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')
+                
         return filtered_points
 
     def load_points_with_filters(self):
