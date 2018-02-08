@@ -83,11 +83,12 @@ class MyFarmware():
             meta_key=self.input_filter_meta_key,
             meta_value=self.input_filter_meta_value,
             pointer_type='Plant')
+        if self.input_debug >= 1: log(self.points, message_type='debug', title=str(self.farmwarename) + ' : load_points_with_filters')
         
 
     def sort_points(self):
         self.points = sorted(self.points , key=lambda elem: (int(elem['x']), int(elem['y'])))
-        if self.input_debug >= 1: log(self.points, message_type='debug', title=str(self.farmwarename) + ' : run')
+        if self.input_debug >= 1: log(self.points, message_type='debug', title=str(self.farmwarename) + ' : sort_points')
         #self.points, self.tab_id = Get_Optimal_Way(self.points)
 
     def load_sequences_id(self):
