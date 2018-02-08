@@ -50,6 +50,7 @@ class MyFarmware():
         self.points = {}
 
     def apply_filters(self, points, point_name='', openfarm_slug='', age_min_day=0, age_max_day=36500, meta_key='', meta_value='', pointer_type='Plant'):
+        if self.input_debug >= 1: log(points, message_type='debug', title=str(self.farmwarename) + ' : load_points')
         filtered_points = []
         now = datetime.datetime.utcnow()
         for p in points:
