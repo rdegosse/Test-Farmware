@@ -61,8 +61,9 @@ class MyFarmware():
             if meta_key != '':
                 try:
                     b_meta = ((p['meta'][meta_key]).lower() == meta_value.lower())
-                except:
+                except Exception as e:
                     b_meta = False
+                    log(e ,message_type='error', title="debug meta_key" )
             else:
                 b_meta = True
             try: 
