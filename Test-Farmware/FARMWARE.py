@@ -10,18 +10,18 @@ class MyFarmware():
     def get_input_env(self):
         prefix = self.farmwarename.lower().replace('-','_')
         
-        self.input_pointname = os.environ.get(prefix+"_pointname", "")
-        self.input_openfarm_slug = os.environ.get(prefix+"_openfarm_slug", "")
+        self.input_pointname = os.environ.get(prefix+"_pointname", '')
+        self.input_openfarm_slug = os.environ.get(prefix+"_openfarm_slug", '')
         self.input_age_min_day = os.environ.get(prefix+"_age_min_day", 0)
         self.input_age_max_day = os.environ.get(prefix+"_age_max_day", 36500)
-        self.input_filter_meta_key = os.environ.get(prefix+"_filter_meta_key", "")
-        self.input_filter_meta_value = os.environ.get(prefix+"_filter_meta_value", "")
+        self.input_filter_meta_key = os.environ.get(prefix+"_filter_meta_key", '')
+        self.input_filter_meta_value = os.environ.get(prefix+"_filter_meta_value", '')
         self.input_sequence_init = os.environ.get(prefix+"_sequence_init", "Not Set")
         self.input_sequence_beforemove  = os.environ.get(prefix+"_sequence_beforemove", "Not Set")
         self.input_sequence_aftermove = os.environ.get(prefix+"_sequence_aftermove", "Not Set")
         self.input_sequence_end = os.environ.get(prefix+"_sequence_end", "Not Set")
-        self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", "")
-        self.input_save_meta_value = os.environ.get(prefix+"_save_meta_value", "")
+        self.input_save_meta_key = os.environ.get(prefix+"_save_meta_key", '')
+        self.input_save_meta_value = os.environ.get(prefix+"_save_meta_value", '')
         self.input_default_z = os.environ.get(prefix+"_default_z", 0)
         self.input_default_speed = os.environ.get(prefix+"_default_speed", 800)
         self.input_debug = os.environ.get(prefix+"_debug", 1)
@@ -65,13 +65,17 @@ class MyFarmware():
                     b_meta = False
             else:
                 b_meta = True
+            try: 
+                if self.input_debug >= 1: log('pointer_type:{} name:{} openfarm_slug:{} age_day:{} b_meta:{}'.format(p['pointer_type'].lower(),p['name'].lower(),p['openfarm_slug'].lower(),age_day,b_meta), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
+            except:
+                pass
             if p['pointer_type'].lower() == pointer_type.lower() and \
                 (p['name'].lower() == point_name.lower() or point_name == '') and \
                 (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '') and \
                 (age_min_day <= age_day <= age_max_day) and \
                 b_meta:
-                #filtered_points.append(p.copy())
-                filtered_points.append(p)
+                filtered_points.append(p.copy())
+                #filtered_points.append(p)
         return filtered_points
 
     def load_points_with_filters(self):
