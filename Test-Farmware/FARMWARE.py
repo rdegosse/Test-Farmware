@@ -71,10 +71,7 @@ class MyFarmware():
                     if self.input_debug >= 1: log('pointer_type:{} name:{} openfarm_slug:{} age_day:{} b_meta:{}'.format(p['pointer_type'].lower(),p['name'].lower(),p['openfarm_slug'].lower(),age_day,b_meta), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                 except:
                     pass
-                if  (p['name'].lower() == point_name.lower() or point_name == '') and \
-                    (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '') and \
-                    (age_min_day <= age_day <= age_max_day) and \
-                    b_meta:
+                if  (p['name'].lower() == point_name.lower() or point_name == '') and (p['openfarm_slug'].lower() == openfarm_slug.lower() or openfarm_slug == '') and (age_min_day <= age_day <= age_max_day) and b_meta==True:
                     filtered_points.append(p.copy())
                     if self.input_debug >= 1: log('Append Point {}'.format(p['id']), message_type='debug', title=str(self.farmwarename) + ' : apply_filters')           
                     #filtered_points.append(p)
