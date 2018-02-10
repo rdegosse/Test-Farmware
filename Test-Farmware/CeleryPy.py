@@ -396,3 +396,16 @@ def wait(milliseconds=0):
     args['milliseconds'] = milliseconds
     _wait = create_node(kind='wait', args=args)
     return _wait
+
+@_print_json
+def read_status():
+    """Celery Script to read status. NOT OFFICIAL
+
+    Kind:
+        read_status
+    Arguments:
+        {}
+    """
+    args = {}
+    _read_status = create_node(kind='read_status', args=args)
+    return _read_status
