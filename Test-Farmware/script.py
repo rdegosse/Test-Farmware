@@ -1,3 +1,4 @@
+import os
 
 from FARMWARE import MyFarmware
 from CeleryPy import log
@@ -10,7 +11,9 @@ if __name__ == "__main__":
 
     log('Start...', message_type='info', title=FARMWARE_NAME)
 
-    log(read_status(), message_type='info', title=FARMWARE_NAME)
+    #log(read_status(), message_type='info', title=FARMWARE_NAME)
+
+    log(os.environ.get('FARMWARE_URL','not set'), message_type='info', title=FARMWARE_NAME)
     
     """
     try:
