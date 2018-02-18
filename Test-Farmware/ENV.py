@@ -5,13 +5,14 @@ Load and save environment variables.
 """
 import os
 import json
+from CeleryPy import *
 try:
     import redis
 except ImportError:
     REDIS = False
 else:
     REDIS = True
-from CeleryPy import *
+log(REDIS,message_type='info', title='redis')
 
 
 def _load_json(string):
