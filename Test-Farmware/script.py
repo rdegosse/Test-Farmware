@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     #log(os.environ.get('FARMWARE_URL','not set'), message_type='info', title=FARMWARE_NAME)
     
-    log(redis_load('location'), message_type='info', title=FARMWARE_NAME)
+    log(redis_load('location_data.position.x'), message_type='info', title=FARMWARE_NAME)
 
     """
     try:
