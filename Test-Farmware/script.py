@@ -4,6 +4,8 @@ from FARMWARE import MyFarmware
 from CeleryPy import log
 from CeleryPy import read_status
 
+from ENV import redis_load
+
 
 if __name__ == "__main__":
 
@@ -13,8 +15,10 @@ if __name__ == "__main__":
 
     #log(read_status(), message_type='info', title=FARMWARE_NAME)
 
-    log(os.environ.get('FARMWARE_URL','not set'), message_type='info', title=FARMWARE_NAME)
+    #log(os.environ.get('FARMWARE_URL','not set'), message_type='info', title=FARMWARE_NAME)
     
+    log(redis_load('location'), message_type='info', title=FARMWARE_NAME)
+
     """
     try:
         farmware = MyFarmware(FARMWARE_NAME)
