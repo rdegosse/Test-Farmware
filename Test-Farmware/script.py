@@ -5,6 +5,7 @@ from CeleryPy import log
 from CeleryPy import read_status
 
 from ENV import redis_load
+from ENV import load
 
 
 if __name__ == "__main__":
@@ -17,7 +18,8 @@ if __name__ == "__main__":
 
     #log(os.environ.get('FARMWARE_URL','not set'), message_type='info', title=FARMWARE_NAME)
     
-    log(redis_load(key='location_data.position',name='x'), message_type='info', title=FARMWARE_NAME)
+    log(redis_load(key='location.position',name='x'), message_type='info', title=FARMWARE_NAME)
+    log(load(name='location'), message_type='info', title=FARMWARE_NAME)
 
     """
     try:

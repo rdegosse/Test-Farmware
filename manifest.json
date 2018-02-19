@@ -3,7 +3,7 @@
  "language": "python",
  "author": "rdegosse",
  "description": "Farmware tester",
- "version": "1.0.1",
+ "version": "1.0.2",
  "min_os_version_major": 6,
  "url": "https://raw.githubusercontent.com/rdegosse/Test-Farmware/master/manifest.json",
  "zip": "https://github.com/rdegosse/Test-Farmware/archive/master.zip",
