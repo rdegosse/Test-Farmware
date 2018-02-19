@@ -7,7 +7,7 @@ import os
 import json
 from CeleryPy import *
 try:
-    import redis
+    import redis-py
 except ImportError:
     REDIS = False
 else:
