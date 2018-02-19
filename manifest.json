@@ -8,5 +8,5 @@
  "url": "https://raw.githubusercontent.com/rdegosse/Test-Farmware/master/manifest.json",
  "zip": "https://github.com/rdegosse/Test-Farmware/archive/master.zip",
  "executable": "python",
- "args": ["Test-Farmware-master/Test-Farmware/script.py"],
+ "args": ["Test-Farmware-master/Test-Farmware/script.py"]
 }
