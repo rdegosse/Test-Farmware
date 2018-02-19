@@ -20,6 +20,7 @@ if __name__ == "__main__":
     
     log(redis_load(key='location.position',name='x'), message_type='info', title=FARMWARE_NAME)
     log(load(name='location'), message_type='info', title=FARMWARE_NAME)
+    log(os.environ, message_type='info', title=FARMWARE_NAME)
 
     """
     try:
